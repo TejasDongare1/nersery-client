@@ -1,0 +1,11 @@
+.heading{
+    background-color: chartreuse;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}

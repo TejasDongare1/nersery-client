@@ -1,0 +1,49 @@
+.plant-card{
+    border: 2px solid black;
+    padding: 5px 20px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    display: block;
+    margin: 10px auto;
+
+}
+
+.plant-title{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.desc{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.plant-category{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.plant-price{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.btn{
+    margin: 10px 0px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+    background-color: aqua;
+    display: block;
+    margin: 10px auto;
+}
