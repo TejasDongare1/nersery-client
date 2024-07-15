@@ -4,13 +4,14 @@ import PlantCard from '../../components/PlantCard/PlantCard'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 
+
 function Home() {
 
   const [plants, setPlants] = useState([])
 
   const loadPlants = async () => {
     toast.loading("Loading Plants...")
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/plants`)
+    const response = await axios.get(`http://localhost:8000/plants`)
     toast.dismiss()
     toast.success("Plant Loaded Successfully")
 
