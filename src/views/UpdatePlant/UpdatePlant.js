@@ -1,10 +1,10 @@
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import axios from 'axios'
-import React, { useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
-import "./AddPlant.css"
 
-
-function AddPlant() {
+function UpdatePlant() {
 
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
@@ -12,41 +12,53 @@ function AddPlant() {
     const [description, setDescription] = useState("")
     const [image, setImage] = useState("")
 
-    const addPlant = async ()=>{
-        toast.loading("Adding Plant...")
 
-        if(!name || !category || !price || !image || !description){
-            toast.error("Please Enter All Details")
-            return
-        }
+    const {id} = useParams();
 
-        const response = await axios.post('http://localhost:8000/plant',{
+    const updatePlant =async ()=>{
+        const response = await axios.put(`http://localhost:8000/plant/${id}`,{
             name,
             category,
             price,
-            description,
-            image
+            image,
+            description
         })
-        toast.dismiss()
-        toast.success("New Plant Added successfully")
+        toast.success("Plant Updated Successfully")
 
-        setName("")
-        setCategory("")
-        setPrice("")
-        setDescription("")
-        setImage("")
-
-        window.location.href = '/'
+        window.location.href = "/"
     }
+    const loadPlant =async (id)=>{
+        if(!id){
+            return
+        }
+        const response = await axios.get(`http://localhost:8000/plant/${id}`)
 
+    
 
-    return (
-        <>
-            <h1 className='h1'>Add Plant</h1>
+        const {name, image,price, category, description} = response.data.data
 
-            <div className='container'>
+        setName(name)
+        setCategory(category)
+        setPrice(price)
+        setImage(image)
+        setDescription(description)
 
-            <form>
+       
+    }
+   
+
+    useEffect(()=>{
+        
+            loadPlant(id)
+    
+    }, [id])
+
+  return (
+    <div>
+        <h1 className='h1'>Update Plant</h1>
+
+        <div className='container'>
+        <form>
                 <input type="text"
                     placeholder='Enter Plant Name'
                     value={name}
@@ -83,13 +95,12 @@ function AddPlant() {
 
 
 
-                <button type='button' onClick={addPlant} className='btn-add-plant'>Add Plant</button>
+                <button type='button' onClick={updatePlant} className='btn-add-plant'>Update Plant</button>
             </form>
             </div>
             <Toaster/>
-        </>
-
-    )
+    </div>
+  )
 }
 
-export default AddPlant
+export default UpdatePlant
