@@ -17,6 +17,14 @@
     font-style: italic;
 }
 
+.plant-image{
+    border-radius: 10px;
+    width: 200px;
+    display: block;
+    margin: 10px auto;
+    box-shadow: black 0px 0px 8px;
+}
+
 .desc{
     text-align: center;
     font-weight: bold;

@@ -1,28 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Home.css"
 import PlantCard from '../../components/PlantCard/PlantCard'
+import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 function Home() {
 
-  const plants = [
-    {
-      "id": 545,
-      "name": "mango",
-      "category": "Flowering Plant",
-      "image": "https://example.com/bamboo.jpg",
-      "price": 50,
-      "description": "Bamboo is a tropical plant native to China, Indonesia, and Taiwan."
-    },
-    {
-      "_id": "668ee4ed25a27bfe10a5bea8",
-      "name": "jasmine",
-      "category": "inddor",
-      "image": "image.com",
-      "price": 200,
-      "description": "Flowering plant",
-      "__v": 0
-    }
-  ]
+  const [plants, setPlants] = useState([])
+
+  const loadPlants = async () => {
+    toast.loading("Loading Plants...")
+    const response = await axios.get('http://localhost:8000/plants')
+    toast.dismiss()
+    toast.success("Plant Loaded Successfully")
+
+    setPlants(response.data.data)
+    
+  }
+
+  useEffect(() => {
+    loadPlants()
+  }, [])
 
   return (
     <div>
@@ -37,7 +35,7 @@ function Home() {
             price,
             description } = plant
 
-          return (<PlantCard 
+          return (<PlantCard
             key={i}  // add unique key to each card for better performance and accessibility
             _id={_id}
             name={name}
@@ -47,6 +45,7 @@ function Home() {
             description={description} />)
         })
       }
+      <Toaster />
 
     </div>
   )
