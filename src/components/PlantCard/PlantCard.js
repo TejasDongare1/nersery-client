@@ -7,7 +7,7 @@ import "./PlantCard.css"
 function PlantCard({_id, name, category, image, price, description, loadPlants}) {
 
   const deletePlant =async (plantId)=>{
-    const response =await axios.delete(`http://localhost:8000/plant/${plantId}`)
+    const response =await axios.delete(`https://nursery-server-nzk8.onrender.com/plant/${plantId}`)
 
   
     loadPlants()

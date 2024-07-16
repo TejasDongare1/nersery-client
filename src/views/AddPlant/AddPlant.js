@@ -20,7 +20,7 @@ function AddPlant() {
             return
         }
 
-        const response = await axios.post('http://localhost:8000/plant',{
+        const response = await axios.post('https://nursery-server-nzk8.onrender.com/plant',{
             name,
             category,
             price,

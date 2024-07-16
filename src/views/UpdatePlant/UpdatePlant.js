@@ -31,7 +31,7 @@ function UpdatePlant() {
         if(!id){
             return
         }
-        const response = await axios.get(`http://localhost:8000/plant/${id}`)
+        const response = await axios.get(`https://nursery-server-nzk8.onrender.com/plant/${id}`)
 
     
 
